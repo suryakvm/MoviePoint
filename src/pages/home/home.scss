@@ -1,0 +1,83 @@
+page-home {
+    font-family: "Montserrat";
+   .card{
+       display:grid;
+       grid-template-columns: 0.9fr 1.1fr;
+   }
+   
+//    .toolbar-content{
+//        display:grid;
+//        grid-template-columns: 1fr 0.5fr;
+//        align-items:center;
+//    }
+
+//    ion-icon{
+//        text-align:center;
+//        color:#fff;
+//    }
+
+
+   .toolbar-background{
+    background-image : linear-gradient(to right bottom,purple,rgb(252, 56, 121));
+   }
+
+   .toolbar-title-md{
+       color:white;
+   }
+   ion-select{
+       max-width: 65%;
+       min-width: 45%;
+   }
+   .select-icon{
+       display: none;
+   }
+   
+   .toolbar-title-ios{
+    color:white;
+    font-weight:400;
+    }
+
+    ion-card{
+        border-radius:10px !important;
+    }
+    .genre{
+        color:white;
+        // padding-right:20%;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size:1.2em;
+    }
+    .card-md{
+        margin: 0 auto !important;
+        margin-top:10px !important;
+    }
+    .movieImg{
+        display:inline-block;
+        width:100%;
+        padding:12px;
+        vertical-align:top;
+    }
+    .movieImg img{
+        border-radius:5px;
+    }
+    .movieBrief{
+        margin-top:15px;
+        display:inline-block;
+        font-weight:500;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+        line-height: 1.6;
+    }
+    .movieBrief ul{
+        font-size: 1.4em;
+        color:rgb(241, 208, 18);
+    }
+    .rating{
+        list-style: none;
+        padding:0;
+    }
+    .rating li{
+        display:inline-block;
+    }
+
+}

@@ -1,0 +1,21 @@
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+<ion-menu type="push" [content]="content">
+        <ion-header>
+                <ion-navbar style="background-image : linear-gradient(to right bottom,purple,rgb(252, 56, 121));">
+                    <button #closeMenu ion-button menuToggle ><ion-icon style="color:white" name="arrow-back"></ion-icon></button>
+                </ion-navbar>
+        </ion-header>
+   
+    <ion-content>
+      <ion-list>
+          <ion-item class="sideText" (click)="openMoviesPage()">Movies</ion-item>
+          <!-- <ion-item (click)="openShowsPage()">Tv Shows</ion-item> -->
+          <ion-item class="sideText" (click)="topRatedMovies()">Top rated movies</ion-item>
+          <ion-item class="sideText" (click)="upComingMovies()">Upcoming movies</ion-item>
+          <ion-item class="sideText" (click)="nowPlayingMovies()">Now playing movies</ion-item>
+          <ion-item class="sideText" (click)="popularMovies()">Popular movies</ion-item>
+     </ion-list>
+    </ion-content>
+</ion-menu>
+  
+  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
