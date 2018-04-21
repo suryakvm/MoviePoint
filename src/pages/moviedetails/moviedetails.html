@@ -26,4 +26,14 @@
             <img src={{imageBaseUrl+posters[2]?.file_path}}>
         </ion-slide>
       </ion-slides>
+      <div class="container">
+        <div>
+          <img [src]="imageBaseUrl+movie?.poster_path" alt="">
+        </div>
+        <div>
+          {{movie?.overview}}
+        </div>
+        {{movie.release_date.substr(0,4)}}
+      </div>
+
 </ion-content>

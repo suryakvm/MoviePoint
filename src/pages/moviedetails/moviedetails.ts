@@ -26,17 +26,16 @@ export class MoviedetailsPage {
 
   
   constructor(public movieService: MovieServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
-    this.movieService.getImagesForMovie(this.movie.id).subscribe((data)=>{
-      debugger;
-      this.posters = data.posters;
-      this.backdrops = data.backdrops;
-    });
   }
 
   ionViewDidLoad() {
     debugger;
     console.log('ionViewDidLoad MoviedetailsPage');
-    
+    this.movieService.getImagesForMovie(this.movie.id).subscribe((data)=>{
+      debugger;
+      this.posters = data.posters;
+      this.backdrops = data.backdrops;
+    });
   }
 
 }
