@@ -15,6 +15,7 @@
 +
 
 <ion-content>
+  <!-- slider which displays 3 images -->
     <ion-slides class="slides">
         <ion-slide>
           <img src={{imageBaseUrl+posters[0]?.file_path}}>
@@ -28,12 +29,19 @@
       </ion-slides>
       <div class="container">
         <div>
+          <!-- Image for showing beside text -->
           <img [src]="imageBaseUrl+movie?.poster_path" alt="">
         </div>
+        <!-- movie plot -->
         <div>
           {{movie?.overview}}
         </div>
+        <!-- year -->
         {{movie.release_date.substr(0,4)}}
-      </div>
+        <div *ngFor = "let no of movie?.genre_ids; let i = index">
+          <span>{{getGenres(movie?.genre_ids)[i].name}}</span>
+        </div>
+        </div>
+
 
 </ion-content>

@@ -1,3 +1,4 @@
+import { GENRES } from './../../constants/genres';
 import { ImageData } from './../../models/imagedata.interface';
 import { Poster } from './../../models/poster.interface';
 import { MovieServiceProvider } from './../../providers/movie-service/movie-service';
@@ -23,6 +24,7 @@ export class MoviedetailsPage {
   movie: Movie = this.navParams.get("movie");
   posters : any = [];
   backdrops  : any= [];
+  
 
   
   constructor(public movieService: MovieServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
@@ -37,5 +39,16 @@ export class MoviedetailsPage {
       this.backdrops = data.backdrops;
     });
   }
+  
+  getGenres(genreIds: number[]): any{
+    debugger;
+    let genreNames: any;
+    genreNames = GENRES.filter((genre) => {
+        return genreIds.indexOf(genre.id) > -1;
+    });
+    return genreNames;
+  }
+
+
 
 }
