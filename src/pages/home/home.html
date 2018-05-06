@@ -33,7 +33,6 @@
 
 </ion-header>
 
-
 <ion-content padding style="background-color: #eceff1">
   <ion-card class = "card" *ngFor="let movie of nowPlayingMovies" (click)="openDetails(movie)">
     
@@ -44,7 +43,7 @@
         <span style = "display:block">{{movie.title}}</span>
         <span style="opacity:0.4;font-size:13px">{{movie.release_date.substr(0,4)}}</span>
         <span style = "display:block">&nbsp;</span>
-        <span style = "display:block;text-align:right;padding-right:25%;font-size:140%" [style.color] = "movie.vote_average/2 >= 3 ? 'green' : 'red'">{{movie.vote_average/2}}</span>
+        <span style = "display:block;text-align:right;padding-right:25%;font-size:140%" [style.color] = "movie.vote_average/2 >= 3 ? 'black' : 'dimgrey'">{{movie.vote_average}}</span>
         <ul  style="margin-top:0" class="rating">
           <li>
             <ion-icon *ngIf = "fiveRating(movie.vote_average)[0]==1" name="star"></ion-icon>

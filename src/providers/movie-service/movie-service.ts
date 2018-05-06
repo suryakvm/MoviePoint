@@ -24,12 +24,14 @@ export class MovieServiceProvider {
   genreId: number;
   page: number =1;
   imageUrl: string;
+  castUrl: string;
   
 
   constructor(public http: HttpClient) {
     console.log('Hello MovieServiceProvider Provider');
   }
 
+  //to get toprated,
   getMovieCollection(): Observable<Data> {
     debugger;
     this.movieUrl = this.apiBaseURL+'movie/'+this.collectionType+'?api_key='+this.api_key;
@@ -38,11 +40,13 @@ export class MovieServiceProvider {
     
   }
 
+  //to get one movie data to display in details screen
   getMovieData(genreId: number): Observable<Data>{
        this.movieUrl = this.apiBaseURL + 'genre/' + genreId + '/movies?api_key='+this.api_key+'&language=en-US&include_adult=false&sort_by=created_at.asc'; 
       return this.http.get<Data>(this.movieUrl);
   }
   
+  //infinite scroll 
   getNextPage(): Observable<Data>{
     this.page += 1;
     console.log(this.page);
@@ -50,7 +54,7 @@ export class MovieServiceProvider {
      return this.http.get<Data>(this.movieUrl);
   }
   
-  
+  //Backdrops and poster images for a Movie
   getImagesForMovie(movieId: number): Observable<any>{
     debugger;
     this.imageUrl = this.apiBaseURL+"movie/"+movieId+"/images?api_key="+this.api_key;
@@ -58,6 +62,21 @@ export class MovieServiceProvider {
     return this.http.get(this.imageUrl);
   }
 
+  //to get casting of a movie 
+  getCastForMovie(movieId: number): Observable<any>{
+    debugger;
+    this.castUrl = this.apiBaseURL+"movie/"+movieId+"/casts?api_key="+this.api_key;
+    console.log("Cast URL:: "+this.castUrl);
+    return this.http.get(this.castUrl);
+  }
+
+  //Search Movies
+  getSearchedMovies(searchString:string): Observable<Data> {
+      this.movieUrl = this.apiBaseURL+'search/movie/?api_key='+this.api_key+'&query='+searchString;
+      console.log(this.movieUrl);
+     return this.http.get<Data>(this.movieUrl);
+
+  }
 
 
 }

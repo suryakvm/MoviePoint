@@ -4,44 +4,76 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
     
   <ion-navbar>
-    <ion-title>{{movie?.title}}</ion-title>
+    <ion-title>Details</ion-title>
   </ion-navbar>
 
-</ion-header>
-
-+
-
+</ion-header> -->
 <ion-content>
-  <!-- slider which displays 3 images -->
-    <ion-slides class="slides">
-        <ion-slide>
-          <img src={{imageBaseUrl+posters[0]?.file_path}}>
-        </ion-slide>
-        <ion-slide>
-            <img src={{imageBaseUrl+posters[1]?.file_path}}>
-        </ion-slide>
-        <ion-slide>
-            <img src={{imageBaseUrl+posters[2]?.file_path}}>
-        </ion-slide>
-      </ion-slides>
-      <div class="container">
-        <div>
-          <!-- Image for showing beside text -->
-          <img [src]="imageBaseUrl+movie?.poster_path" alt="">
-        </div>
-        <!-- movie plot -->
-        <div>
-          {{movie?.overview}}
-        </div>
-        <!-- year -->
-        {{movie.release_date.substr(0,4)}}
-        <div *ngFor = "let no of movie?.genre_ids; let i = index">
-          <span>{{getGenres(movie?.genre_ids)[i].name}}</span>
-        </div>
-        </div>
+  <div class="head">
+        <header [ngStyle]="{'background-image':'url(' +imageBaseUrl+posters[2]?.file_path + ')'}" class="header">
+          <button (click)="goBack()" style="background-color:transparent;color:white;font-size:160%;position:fixed;top:4%;left:2%">  <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+        </header>
+        <img  class="details_img" [src]="imageBaseUrl+movie?.poster_path" alt=""> 
+    </div>
 
+    <div class="container">
+      <span style="display: block;font-size:130%">{{movie.title}}  ({{movie.release_date.substr(0,4)}})</span>
+      <span style="display: block;opacity:0.7;font-size: 90%;padding-top: 2%">{{getGenres(movie?.genre_ids)}}</span>
+      <ul  style="margin-top:0" class="rating">
+        <li>
+          <ion-icon *ngIf = "fiveRating(movie.vote_average)[0]==1" name="star"></ion-icon>
+          <ion-icon *ngIf = "fiveRating(movie.vote_average)[0]==0.5" name="star-half"></ion-icon>
+          <ion-icon *ngIf = "fiveRating(movie.vote_average)[0]==0" name="star-outline"></ion-icon>
+        </li>
+        <li>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[1]==1" name="star"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[1]==0.5" name="star-half"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[1]==0" name="star-outline"></ion-icon>
+        </li>
+        <li>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[2]==1" name="star"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[2]==0.5" name="star-half"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[2]==0" name="star-outline"></ion-icon>
+        </li>
+        <li>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[3]==1" name="star"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[3]==0.5" name="star-half"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[3]==0" name="star-outline"></ion-icon>
+        </li>
+        <li>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[4]==1" name="star"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[4]==0.5" name="star-half"></ion-icon>
+            <ion-icon *ngIf = "fiveRating(movie.vote_average)[4]==0" name="star-outline"></ion-icon>
+        </li>
+        <li><span style="color:rgb(255, 147, 7);font-size:1.4em">{{movie.vote_average}}</span><span style="color:rgba(0, 0, 0, 0.288)">/10</span></li>
+      </ul>
+      
+      <div class="plot">{{movie.overview}}</div>
+      <!-- <div class="casting">
+        {{cast[0]?.name}}
+      </div> -->
+      <!-- <div style="overflow:auto">
+        <ul class="cast">
+          <li *ngFor="let character of cast">
+            <center>
+            <img *ngIf="character?.profile_path != null" [src]=imageBaseUrl+character?.profile_path alt="" class="cast-img">
+            <p>{{character.name}}</p>
+            <p>{{character.character}}</p>
+          </center>
+          </li>
+        </ul>
+      </div> -->
+      <ion-scroll scrollX="true" style="height:300px;white-space:nowrap">
+        <div class="casting" *ngFor="let character of cast"> 
+            <img  [src]=imageBaseUrl+character?.profile_path alt="" style="width:100%">
+        </div>
+         
+      </ion-scroll>
+      
+      
 
+    </div>
 </ion-content>

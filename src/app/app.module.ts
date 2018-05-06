@@ -1,3 +1,4 @@
+
 import { MoviedetailsPage } from './../pages/moviedetails/moviedetails';
 import { MoviesPage } from './../pages/movies/movies';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShowsPage } from '../pages/shows/shows';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -20,7 +22,7 @@ import { ShowsPage } from '../pages/shows/shows';
     MoviedetailsPage,
     MoviesPage,
     ShowsPage
-  ],
+],
   imports: [
     BrowserModule,
     HttpClientModule,

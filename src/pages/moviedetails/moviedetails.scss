@@ -1,11 +1,91 @@
 page-moviedetails {
+.container{
+    padding:3%;
+}
+ion-content{
+    padding:0;
+}
+    
+.head{
+    position: relative;
+    height:35vh;
 
-    .container{
-        display:grid;
-        grid-template-columns: 0.9fr 1.1fr;
+}
+.casting{
+    
+    display : flex;
+    flex-direction: row;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    list-style: none;
+}
+
+
+.details_img{
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.226);
+    height:135px;
+    position:absolute;
+    bottom:0%;
+    left:4%;
+    z-index:1;
+    
+}
+.header{
+    // background-image: url("../../assets/imgs/download.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    filter:grayscale(100%);
+    padding:0;
+    margin-bottom:3%;
+   
+    clip-path:polygon(0 0,100% 0,100% 100%,0 65%);
+    z-index:0;
+    position:relative;
+}
+    .rating{
+        list-style: none;
+        padding:0;
+        font-size: 1.4em;
+        color:rgb(255, 147, 7);
+        padding-top: 2%;
+    }
+    .rating li{
+        display:inline-block;
     }
 
     .slides{
         height:35vh;
+        margin-bottom:12px;
+        padding:0;
     }
+    .rate{
+        font-size:125%; 
+        border:2px solid rebeccapurple;
+        padding:5px;
+        border-radius:50%;
+        text-align:right;
+       
+    }
+    .contentBottom{
+        text-align:center;
+    }
+    .plot{
+        color:rgba(0, 0, 0, 0.514);
+        word-spacing: 2px;
+        line-height: 18px;
+    }
+    .cast{
+        list-style:none;
+        overflow: auto;
+        white-space:nowrap;
+    }
+    .cast-img{
+        border-radius: 50%;
+    }
+    .cast li{
+        display: inline-block;
+    }
+  
 }

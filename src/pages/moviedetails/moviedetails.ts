@@ -24,6 +24,8 @@ export class MoviedetailsPage {
   movie: Movie = this.navParams.get("movie");
   posters : any = [];
   backdrops  : any= [];
+  crew: any = [];
+  cast: any = [];
   
 
   
@@ -38,17 +40,45 @@ export class MoviedetailsPage {
       this.posters = data.posters;
       this.backdrops = data.backdrops;
     });
+    this.movieService.getCastForMovie(this.movie.id).subscribe((data)=>{
+      this.cast = data.cast;
+      console.log(this.cast);
+      this.crew = data.crew;
+    })
   }
   
-  getGenres(genreIds: number[]): any{
+  getGenres(genreIds: number[]): string{
     debugger;
     let genreNames: any;
+    let genreNameString: string = "";
     genreNames = GENRES.filter((genre) => {
         return genreIds.indexOf(genre.id) > -1;
     });
-    return genreNames;
+    for(var i=0;i<genreNames.length;i++){
+      genreNameString = genreNameString + genreNames[i].name+", ";
+    }
+    return genreNameString;
+  }
+  fiveRating(tenRating: number): Number[]{
+    let ratingArr: number[] = [0,0,0,0,0];
+    let rating = tenRating/2;
+     let floorVal = Math.floor(rating);
+    for(let j=0;j<floorVal;j++){
+      ratingArr[j] = 1;
+    }
+    if(rating-floorVal == 0)
+    ratingArr[floorVal] = 0;
+    else if(rating-floorVal > 0.6)
+    ratingArr[floorVal] = 1;
+    else
+    ratingArr[floorVal] = 0.5;
+    return ratingArr;
   }
 
+  goBack(): void{
+    console.log("Back");
+    this.navCtrl.pop();
+  }
 
 
 }
